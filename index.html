@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="notes.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- ================= Sidebar ================= -->
+        <aside class="sidebar">
+            <h1 class="logo">StudyMate</h1>
+            <div class="profile">
+                <img src="assets/profile.jpg" alt="Profile">
+                <h3>Rakshana</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a></li>
+                    <li><a href="notes.html"><i class="fa-solid fa-note-sticky"></i>Notes</a></li>
+                    <li><a href="tasks.html"><i class="fa-solid fa-list-check"></i>Tasks</a></li>
+                    <li><a href="dictionary.html"><i class="fa-solid fa-book"></i>Dictionary</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i>Calendar</a></li>
+                    <li><a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- ================= Main Content ================= -->
+
+        <main class="main">
+            <!-- Header -->
+            <header>
+                <div>
+                    <h2 id="greeting">Loading...</h2>
+                    <p>Ready to achieve your goals today?</p>
+                </div>
+                <div class="header-right">
+                    <span class="date" id="currentDate">Loading...</span>
+                    <div class="notification"><i id="notificationBell" class="fa-regular fa-bell bell"></i>
+                    <span class="badge">2</span></div>
+                </div>
+            </header>
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input id="searchInput" type="text" placeholder="Search notes, tasks, words..." autocomplete="off">
+            </div>
+
+            <!-- Quick Stats -->
+
+            <section class="stats">
+
+                <div class="card stat-card">
+
+                    <i class="fa-solid fa-note-sticky"></i>
+
+                    <h3 id="notesCount">0</h3>
+
+                    <p>Notes</p>
+
+                </div>
+
+                <div class="card stat-card">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                    <h3 id="tasksCount">0</h3>
+
+                    <p>Tasks</p>
+
+                </div>
+
+                <div class="card stat-card">
+
+                    <i class="fa-solid fa-book"></i>
+
+                    <h3 id="wordsCount">0</h3>
+
+                    <p>Words</p>
+
+                </div>
+
+                <div class="card stat-card">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    <h3 id="streakCount">0</h3>
+
+                    <p>Day Streak</p>
+
+                </div>
+
+            </section>
+
+            <!-- Dashboard cards start here -->
+            <!-- ================= Dashboard ================= -->
+
+            <section class="dashboard-grid">
+
+                <!-- Today's Tasks -->
+
+                <div class="card dashboard-card">
+
+                    <div class="card-header">
+                        <h3>🔥 Today's Tasks</h3>
+                        <a href="tasks.html">View All →</a>
+                    </div>
+
+                    <ul id="taskList" class="task-list">
+                        <li>
+                            <input type="checkbox" id="task1">
+                            <label for="task1">
+                                Complete CN Assignment
+                            </label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" id="task2">
+                            <label for="task2">Revise Java</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" id="task3">
+                            <label for="task3">Buy Notebook</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" id="task4" checked>
+                            <label for="task4">Submit Lab Record</label>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!-- Recent Notes -->
+
+                <div class="card dashboard-card">
+
+                    <div class="card-header">
+                        <h3>📝 Recent Notes</h3>
+                        <a href="notes.html">View All →</a>
+                    </div>
+
+                    <ul id="notesList" class="notes-list">
+
+                        <li>
+                            <i class="fa-solid fa-file-lines"></i>
+                            DBMS Unit 4
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-file-lines"></i>
+                            AI Notes
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-file-lines"></i>
+                            Networking
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-file-lines"></i>
+                            Java OOP
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Word of the Day -->
+
+                <div class="card dashboard-card">
+
+                    <div class="card-header">
+                        <h3>📖 Word of the Day</h3>
+                    </div>
+
+                    <h2 id="wordOfDay" class="word">
+                        Integrity
+                    </h2>
+
+                    <p id="wordMeaning" class="meaning">
+                        The quality of being honest and having strong moral principles.
+                    </p>
+
+                    <button id="saveWord" class="save-btn">
+                        ⭐ Save Word
+                    </button>
+
+                </div>
+
+                <!-- Upcoming Deadlines -->
+
+<div class="card dashboard-card">
+
+    <div class="card-header">
+        <h3>📅 Upcoming Deadlines</h3>
+        <a href="calendar.html">View All →</a>
+    </div>
+
+    <div id="deadlineList">
+        <p>No upcoming deadlines.</p>
+    </div>
+
+</div>
+
+            <!-- Study Progress -->
+
+            <section class="card progress-card">
+
+                <div class="card-header">
+
+                    <h3>📊 Study Progress</h3>
+
+                    <span id="progressPercent">0%</span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div id="progressFill" class="progress-fill"></div>
+
+                </div>
+
+                <div class="progress-stats">
+
+                    <div>
+                        <h2 id="progressNotes">0</h2>
+                        <p>Notes</p>
+                    </div>
+
+                    <div>
+                        <h2 id="progressTasks">0</h2>
+                        <p>Tasks</p>
+                    </div>
+
+                    <div>
+                        <h2 id="studyHours">0 hrs</h2>
+                        <p>Study Time</p>
+                    </div>
+
+                    <div>
+                        <h2 id="progressWords">0</h2>
+                        <p>Words</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Floating Button -->
+
+            <button id="addButton" class="fab">
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <!-- We'll add them in Part 2 -->
+
+        </main>
+
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
