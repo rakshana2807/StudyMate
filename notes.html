@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate - Notes</title>
+
+    <link rel="stylesheet" href="notes.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+
+        <h1 class="logo">StudyMate</h1>
+
+        <div class="profile">
+
+            <img src="assets/profile.jpg" alt="Profile">
+
+            <h3>Rakshana</h3>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="notes.html">
+                        <i class="fa-solid fa-note-sticky"></i>
+                        Notes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tasks.html">
+                        <i class="fa-solid fa-list-check"></i>
+                        Tasks
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dictionary.html">
+                        <i class="fa-solid fa-book"></i>
+                        Dictionary
+                    </a>
+                </li>
+
+                <li>
+                    <a href="calendar.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================= Main ================= -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <h2>📝 My Notes</h2>
+
+                <p>Create, organize and manage your study notes.</p>
+
+            </div>
+
+        </header>
+
+        <!-- ================= Search ================= -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+    type="text"
+    id="searchNote"
+    placeholder="Search notes..."
+>
+
+        </div>
+
+        <!-- ================= Create Note ================= -->
+
+        <div class="create-note">
+
+            <input
+                type="text"
+                id="noteTitle"
+                placeholder="Enter note title">
+
+            <textarea
+                id="noteContent"
+                placeholder="Write your note here..."></textarea>
+
+            <div class="note-options">
+
+                <label>
+
+                    <input type="checkbox" id="pinNote">
+
+                    📌 Pin this note
+
+                </label>
+
+                <button id="addNoteBtn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Note
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Notes ================= -->
+
+        <div class="section-title">
+
+            <h3>📚 Your Notes</h3>
+
+            <span id="noteCount">0 Notes</span>
+
+        </div>
+
+        <!-- JavaScript will insert notes here -->
+
+        <div id="notesContainer" class="notes-grid">
+
+        </div>
+<!-- ================= Pinned Notes ================= -->
+
+<div class="section-title">
+
+    <h3>📌 Pinned Notes</h3>
+
+    <span id="pinnedCount">0 Pinned</span>
+
+</div>
+
+<div id="pinnedNotes" class="notes-grid">
+
+    <!-- JavaScript will load pinned notes -->
+
+</div>
+
+
+<!-- ================= All Notes ================= -->
+
+<div class="section-title">
+
+    <h3>📝 All Notes</h3>
+
+    <span id="noteCount">0 Notes</span>
+
+</div>
+
+<div id="notesContainer" class="notes-grid">
+
+    <!-- JavaScript will load notes -->
+
+</div>
+
+<button id="exportNotes">
+    <i class="fa-solid fa-download"></i>
+    Export Notes
+</button>
+
+<label for="importNotes" class="import-btn">
+    <i class="fa-solid fa-upload"></i>
+    Import Notes
+</label>
+
+<input
+    type="file"
+    id="importNotes"
+    accept=".json"
+    hidden
+>
+<!-- ================= Empty State ================= -->
+
+<div id="emptyState" class="empty-state">
+
+    <i class="fa-solid fa-note-sticky"></i>
+
+    <h2>No Notes Yet</h2>
+
+    <p>Create your first note to get started.</p>
+
+</div>
+
+
+<!-- ================= Edit Note Modal ================= -->
+
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeModal" class="close">&times;</span>
+
+        <h2>Edit Note</h2>
+
+        <input
+            type="text"
+            id="editTitle"
+            placeholder="Title">
+
+        <textarea
+            id="editContent"
+            placeholder="Note Content"></textarea>
+
+        <label class="pin-option">
+
+            <input
+                type="checkbox"
+                id="editPinned">
+
+            📌 Pin this note
+
+        </label>
+
+        <button id="saveEdit">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Changes
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= Floating Button ================= -->
+
+<button id="fab" class="fab">
+
+    <i class="fa-solid fa-plus"></i>
+
+</button>
+
+
+<!-- ================= Toast ================= -->
+
+<div id="toast" class="toast">
+
+    Saved Successfully
+
+</div>
+    </main>
+
+</div>
+
+<script src="notes.js"></script>
+
+</body>
+
+</html>

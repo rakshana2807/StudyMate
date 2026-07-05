@@ -1,0 +1,973 @@
+/* ===========================
+   Global
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    animation:fadeIn .5s;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ===========================
+   Sidebar
+=========================== */
+
+.sidebar{
+
+    width:260px;
+    background:#142850;
+    color:white;
+    padding:30px 20px;
+
+}
+
+.logo{
+
+    text-align:center;
+    margin-bottom:30px;
+    font-size:30px;
+
+}
+
+.profile{
+
+    text-align:center;
+    margin-bottom:35px;
+
+}
+
+.profile img{
+
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid white;
+
+}
+
+.profile h3{
+
+    margin-top:15px;
+
+}
+
+nav ul{
+
+    list-style:none;
+
+}
+
+nav li{
+
+    margin-bottom:12px;
+    border-radius:12px;
+    transition:.3s;
+
+}
+
+nav li a{
+
+    display:flex;
+    align-items:center;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+
+}
+
+nav li i{
+
+    width:30px;
+
+}
+
+nav li:hover{
+
+    background:#1f3b69;
+    transform:translateX(8px);
+
+}
+
+.active{
+
+    background:#1f3b69;
+    border-left:5px solid #FFD54F;
+
+}
+
+/* ===========================
+   Main
+=========================== */
+
+.main{
+
+    flex:1;
+    padding:35px;
+
+}
+
+header{
+
+    margin-bottom:25px;
+
+}
+
+header h2{
+
+    font-size:32px;
+
+}
+
+header p{
+
+    color:#666;
+    margin-top:5px;
+
+}
+
+/* ===========================
+   Search
+=========================== */
+
+.search-box{
+
+    display:flex;
+    align-items:center;
+    background:white;
+    padding:15px 20px;
+    border-radius:50px;
+    margin-bottom:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.search-box i{
+
+    color:#888;
+
+}
+
+.search-box input{
+
+    width:100%;
+    border:none;
+    outline:none;
+    background:none;
+    margin-left:15px;
+    font-size:16px;
+
+}
+/* ===========================
+   Create Note
+=========================== */
+
+.create-note{
+
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    margin-bottom:35px;
+
+}
+
+.create-note input{
+
+    width:100%;
+    padding:14px 18px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+    margin-bottom:18px;
+    outline:none;
+    transition:.3s;
+
+}
+
+.create-note input:focus{
+
+    border-color:#142850;
+    box-shadow:0 0 10px rgba(20,40,80,.15);
+
+}
+
+.create-note textarea{
+
+    width:100%;
+    height:160px;
+    resize:none;
+    padding:16px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+
+}
+
+.create-note textarea:focus{
+
+    border-color:#142850;
+    box-shadow:0 0 10px rgba(20,40,80,.15);
+
+}
+
+/* ===========================
+   Note Options
+=========================== */
+
+.note-options{
+
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.note-options label{
+
+    font-size:15px;
+    cursor:pointer;
+    color:#555;
+
+}
+
+.note-options input{
+
+    width:auto;
+    margin-right:8px;
+
+}
+
+.note-options button{
+
+    background:#142850;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+
+}
+
+.note-options button:hover{
+
+    background:#204b8d;
+    transform:scale(1.05);
+
+}
+
+/* ===========================
+   Section Title
+=========================== */
+
+.section-title{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:35px 0 20px;
+
+}
+
+.section-title h3{
+
+    font-size:22px;
+
+}
+
+.section-title span{
+
+    color:#666;
+    font-weight:600;
+
+}
+
+/* ===========================
+   Notes Grid
+=========================== */
+
+.notes-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:25px;
+
+}
+
+/* ===========================
+   Floating Button
+=========================== */
+
+.fab{
+
+    position:fixed;
+    right:30px;
+    bottom:30px;
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    background:#142850;
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+    transition:.3s;
+
+}
+
+.fab:hover{
+
+    transform:rotate(90deg) scale(1.1);
+
+}
+/* ===========================
+   Note Card
+=========================== */
+
+.note-card{
+
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    word-wrap:break-word;
+
+}
+
+.note-card:hover{
+
+    transform:translateY(-8px);
+    box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+.note-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.note-top h4{
+
+    font-size:20px;
+    color:#142850;
+
+}
+
+.note-top i{
+
+    color:#f4b400;
+    cursor:pointer;
+    font-size:18px;
+
+}
+
+.note-card p{
+
+    color:#555;
+    line-height:1.7;
+    white-space:pre-wrap;
+
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+.note-footer{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:auto;
+
+}
+
+.note-footer span{
+
+    font-size:13px;
+    color:#888;
+
+}
+
+.note-actions{
+
+    display:flex;
+    gap:12px;
+
+}
+
+.note-actions i{
+
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+
+}
+
+.note-actions .fa-pen{
+
+    color:#1E88E5;
+
+}
+
+.note-actions .fa-trash{
+
+    color:#E53935;
+
+}
+
+.note-actions .fa-thumbtack{
+
+    color:#F4B400;
+
+}
+
+.note-actions i:hover{
+
+    transform:scale(1.2);
+
+}
+
+/* ===========================
+   Note Colors
+=========================== */
+
+.blue{
+
+    border-left:6px solid #42A5F5;
+
+}
+
+.green{
+
+    border-left:6px solid #66BB6A;
+
+}
+
+.yellow{
+
+    border-left:6px solid #FFD54F;
+
+}
+
+.pink{
+
+    border-left:6px solid #EC407A;
+
+}
+
+.purple{
+
+    border-left:6px solid #AB47BC;
+
+}
+
+/* ===========================
+   Empty State
+=========================== */
+
+.empty-state{
+
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+    color:#777;
+
+}
+
+.empty-state i{
+
+    font-size:70px;
+    margin-bottom:20px;
+    color:#bbb;
+
+}
+
+.empty-state h2{
+
+    margin-bottom:10px;
+
+}
+
+.empty-state p{
+
+    color:#999;
+
+}
+
+/* ===========================
+   Modal
+=========================== */
+
+.modal{
+
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+
+}
+
+.modal-content{
+
+    width:90%;
+    max-width:550px;
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    animation:fadeIn .3s;
+
+}
+
+.modal-content h2{
+
+    margin-bottom:20px;
+
+}
+
+.modal-content input,
+.modal-content textarea{
+
+    width:100%;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:18px;
+    outline:none;
+
+}
+
+.modal-content textarea{
+
+    height:180px;
+    resize:none;
+
+}
+
+.modal-content button{
+
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#142850;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.modal-content button:hover{
+
+    background:#204b8d;
+
+}
+
+.close{
+
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+
+}
+
+/* ===========================
+   Toast
+=========================== */
+
+.toast{
+
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#142850;
+    color:white;
+    padding:14px 24px;
+    border-radius:10px;
+    opacity:0;
+    transition:.4s;
+    pointer-events:none;
+    z-index:9999;
+
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#142850;
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eef2f7;
+
+}
+/* ===========================
+   Pin Option
+=========================== */
+
+.pin-option{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    color:#555;
+    font-size:15px;
+
+}
+
+.pin-option input{
+
+    width:18px;
+    height:18px;
+    cursor:pointer;
+
+}
+
+/* ===========================
+   Inputs Animation
+=========================== */
+
+input,
+textarea{
+
+    transition:.3s;
+
+}
+
+input:focus,
+textarea:focus{
+
+    border-color:#142850;
+    box-shadow:0 0 8px rgba(20,40,80,.15);
+
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+button{
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+   Card Animation
+=========================== */
+
+.note-card{
+
+    animation:fadeCard .35s ease;
+
+}
+
+@keyframes fadeCard{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:1024px){
+
+    .container{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+    }
+
+    nav ul{
+
+        display:flex;
+        justify-content:space-around;
+        flex-wrap:wrap;
+
+    }
+
+    nav li{
+
+        margin:8px;
+
+    }
+
+    .main{
+
+        padding:25px;
+
+    }
+
+    .notes-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .main{
+
+        padding:20px;
+
+    }
+
+    header h2{
+
+        font-size:28px;
+
+    }
+
+    .search-box{
+
+        padding:12px 18px;
+
+    }
+
+    .create-note{
+
+        padding:18px;
+
+    }
+
+    .note-options{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+
+    }
+
+    .note-options button{
+
+        width:100%;
+
+    }
+
+    .notes-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .modal-content{
+
+        width:95%;
+        padding:20px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .profile img{
+
+        width:80px;
+        height:80px;
+
+    }
+
+    .logo{
+
+        font-size:24px;
+
+    }
+
+    header h2{
+
+        font-size:24px;
+
+    }
+
+    .fab{
+
+        width:55px;
+        height:55px;
+        font-size:20px;
+        right:20px;
+        bottom:20px;
+
+    }
+
+    .toast{
+
+        right:15px;
+        left:15px;
+        text-align:center;
+
+    }
+
+}
+/* ======================================
+   Export Notes Button
+====================================== */
+
+#exportNotes{
+
+    background:#142850;
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    margin-top:20px;
+
+    box-shadow:0 6px 15px rgba(20,40,80,.15);
+
+}
+
+#exportNotes:hover{
+
+    background:#1f3b69;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(20,40,80,.25);
+
+}
+
+#exportNotes:active{
+
+    transform:scale(.97);
+
+}
+/* ==========================
+   Import Button
+========================== */
+
+.import-btn{
+
+    display:inline-block;
+
+    background:#28a745;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-left:12px;
+
+    transition:.3s;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+
+}
+
+.import-btn:hover{
+
+    background:#218838;
+
+    transform:translateY(-3px);
+
+}
