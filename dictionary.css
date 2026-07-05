@@ -1,0 +1,201 @@
+/* ======================================
+   Dictionary Page
+====================================== */
+
+.dictionary-container{
+    width:100%;
+}
+
+/* Search Button */
+
+#searchBtn{
+    margin-left:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:#142850;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+#searchBtn:hover{
+    background:#204b8d;
+}
+
+/* Result Card */
+
+.dictionary-card{
+    margin-top:30px;
+}
+
+.word{
+    font-size:34px;
+    color:#142850;
+    margin-bottom:10px;
+}
+
+#phonetic{
+    color:#666;
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+#partOfSpeech{
+    color:#204b8d;
+    font-size:18px;
+    margin-bottom:15px;
+    text-transform:capitalize;
+}
+
+.meaning{
+    color:#444;
+    line-height:1.8;
+    font-size:17px;
+}
+
+#example{
+    margin-top:20px;
+    padding:15px;
+    background:#eef4ff;
+    border-left:5px solid #142850;
+    border-radius:8px;
+    color:#555;
+    font-style:italic;
+}
+
+/* Save Button */
+
+#saveWord{
+    margin-top:25px;
+}
+
+/* Saved Words */
+
+.saved-card{
+    margin-top:30px;
+}
+
+#savedWordsList{
+    list-style:none;
+    margin-top:20px;
+}
+
+#savedWordsList li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;
+    margin-bottom:12px;
+    background:#f8f9fb;
+    border-radius:10px;
+    transition:.3s;
+}
+
+#savedWordsList li:hover{
+    background:#eef2f7;
+    transform:translateX(5px);
+}
+
+.saved-word{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:17px;
+    font-weight:500;
+}
+
+.saved-word i{
+    color:#142850;
+}
+
+/* Delete Button */
+
+.delete-btn{
+    border:none;
+    background:#ff4d4d;
+    color:white;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    background:#d93636;
+}
+
+/* Clear Button */
+
+#clearWords{
+    background:#dc3545;
+}
+
+#clearWords:hover{
+    background:#b52a37;
+}
+
+/* Loading */
+
+.loading{
+    text-align:center;
+    color:#666;
+    padding:20px;
+}
+
+/* Error */
+
+.error{
+    color:#d93636;
+    text-align:center;
+    font-weight:600;
+    padding:20px;
+}
+
+/* Toast */
+
+.toast{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    background:#142850;
+    color:white;
+    padding:15px 25px;
+    border-radius:10px;
+    opacity:0;
+    transition:.4s;
+    pointer-events:none;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+    z-index:1000;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .search-box{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    #searchBtn{
+        width:100%;
+        margin-left:0;
+    }
+
+    .word{
+        font-size:28px;
+    }
+
+    #savedWordsList li{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .delete-btn{
+        width:100%;
+    }
+
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate - Dictionary</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dictionary.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= Sidebar ================= -->
+
+        <aside class="sidebar">
+
+            <h1 class="logo">StudyMate</h1>
+
+            <div class="profile">
+
+                <img src="assets/profile.jpg" alt="Profile">
+
+                <h3>Rakshana</h3>
+
+            </div>
+
+            <nav>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            <i class="fa-solid fa-house"></i>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="notes.html">
+                            <i class="fa-solid fa-note-sticky"></i>
+                            Notes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tasks.html">
+                            <i class="fa-solid fa-list-check"></i>
+                            Tasks
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="dictionary.html">
+                            <i class="fa-solid fa-book"></i>
+                            Dictionary
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="calendar.html">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            Calendar
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="settings.html">
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </aside>
+
+        <!-- ================= Main Content ================= -->
+
+        <main class="main">
+
+            <!-- Header -->
+
+            <header>
+
+                <div>
+
+                    <h2>📖 Dictionary</h2>
+
+                    <p>Search meanings, pronunciation and examples.</p>
+
+                </div>
+
+            </header>
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="wordInput"
+                    placeholder="Search any English word..."
+                    autocomplete="off">
+
+                <button id="searchBtn" class="save-btn">
+                    Search
+                </button>
+
+            </div>
+
+            <!-- Dictionary Result -->
+
+            <section class="card" style="margin-top:30px;">
+
+                <h2 id="word" class="word">
+                    Welcome 👋
+                </h2>
+
+                <p id="phonetic" style="color:#777;margin:10px 0;">
+                    Search a word to begin.
+                </p>
+
+                <h4 id="partOfSpeech"></h4>
+
+                <p id="meaning" class="meaning">
+                    Enter any English word in the search box above.
+                </p>
+
+                <p id="example"
+                    style="margin-top:20px;font-style:italic;color:#555;">
+                </p>
+
+                <button id="saveWord" class="save-btn">
+                    ⭐ Save Word
+                </button>
+
+            </section>
+
+            <!-- Saved Words -->
+
+            <section class="card" style="margin-top:30px;">
+
+                <div class="card-header">
+
+                    <h3>⭐ Saved Words</h3>
+
+                    <button id="clearWords" class="save-btn">
+                        Clear All
+                    </button>
+
+                </div>
+
+                <ul
+                    id="savedWordsList"
+                    class="notes-list">
+
+                    <li>No saved words.</li>
+
+                </ul>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Toast -->
+
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript -->
+
+    <script src="dictionary.js"></script>
+
+</body>
+
+</html>
