@@ -7,7 +7,7 @@
     <title>StudyMate Dashboard</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="notes.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -19,29 +19,49 @@
 
 <body>
 
+    <!-- Skip link for keyboard users -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+    <!-- Hamburger menu button (visible on mobile/tablet only) -->
+    <button id="hamburgerBtn" class="hamburger-btn" type="button"
+        aria-label="Toggle sidebar menu" aria-expanded="false" aria-controls="sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Dark overlay behind the sidebar on mobile/tablet -->
+    <div id="overlay" class="overlay" aria-hidden="true"></div>
+
     <div class="container">
         <!-- ================= Sidebar ================= -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <h1 class="logo">StudyMate</h1>
             <div class="profile">
-                <img src="assets/profile.jpg" alt="Profile">
+                <img src="profile.jpg" alt="Profile">
                 <h3>Rakshana</h3>
             </div>
-            <nav>
+            <nav aria-label="Primary">
                 <ul>
                     <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a></li>
-                    <li><a href="notes.html"><i class="fa-solid fa-note-sticky"></i>Notes</a></li>
+                    <li><a href="note.html"><i class="fa-solid fa-note-sticky"></i>Notes</a></li>
                     <li><a href="tasks.html"><i class="fa-solid fa-list-check"></i>Tasks</a></li>
                     <li><a href="dictionary.html"><i class="fa-solid fa-book"></i>Dictionary</a></li>
-                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i>Calendar</a></li>
+                    <li><a href="calender.html"><i class="fa-solid fa-calendar-days"></i>Calendar</a></li>
                     <li><a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a></li>
                 </ul>
             </nav>
+
+            <!-- Theme Toggle -->
+            <button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-pressed="false">
+                <i class="fa-solid fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
         </aside>
 
         <!-- ================= Main Content ================= -->
 
-        <main class="main">
+        <main class="main" id="mainContent">
             <!-- Header -->
             <header>
                 <div>
@@ -155,7 +175,7 @@
 
                     <div class="card-header">
                         <h3>📝 Recent Notes</h3>
-                        <a href="notes.html">View All →</a>
+                        <a href="note.html">View All →</a>
                     </div>
 
                     <ul id="notesList" class="notes-list">
@@ -212,7 +232,7 @@
 
     <div class="card-header">
         <h3>📅 Upcoming Deadlines</h3>
-        <a href="calendar.html">View All →</a>
+        <a href="calender.html">View All →</a>
     </div>
 
     <div id="deadlineList">
@@ -279,6 +299,7 @@
 
     </div>
     <div id="toast" class="toast"></div>
+    <script src="sidebar.js"></script>
     <script src="script.js"></script>
 </body>
 
