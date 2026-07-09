@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>StudyMate Calendar</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="calender.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Skip link for keyboard users -->
+<a href="#mainContent" class="skip-link">Skip to main content</a>
+
+<!-- Hamburger menu button (visible on mobile/tablet only) -->
+<button id="hamburgerBtn" class="hamburger-btn" type="button"
+    aria-label="Toggle sidebar menu" aria-expanded="false" aria-controls="sidebar">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Dark overlay behind the sidebar on mobile/tablet -->
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <h1 class="logo">StudyMate</h1>
+
+        <div class="profile">
+
+            <img src="profile.jpg" alt="Profile">
+
+            <h3>Rakshana</h3>
+
+        </div>
+
+        <nav aria-label="Primary">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="note.html">
+                        <i class="fa-solid fa-note-sticky"></i>
+                        Notes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tasks.html">
+                        <i class="fa-solid fa-list-check"></i>
+                        Tasks
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dictionary.html">
+                        <i class="fa-solid fa-book"></i>
+                        Dictionary
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="calender.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-pressed="false">
+            <i class="fa-solid fa-moon"></i>
+            <span>Dark Mode</span>
+        </button>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main" id="mainContent">
+
+        <header>
+
+            <div>
+
+                <h2>📅 Study Calendar</h2>
+
+                <p>Manage your schedule and never miss an important date.</p>
+
+            </div>
+
+            <button class="add-btn" id="addEventBtn" type="button">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Event
+
+            </button>
+
+        </header>
+
+        <div class="calendar-container">
+
+            <!-- Header -->
+
+            <div class="calendar-header">
+
+                <button id="prev" aria-label="Previous month">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <h2 id="monthYear"></h2>
+
+                <button id="next" aria-label="Next month">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+            <!-- Month & Year + Today -->
+
+            <div class="selectors">
+
+                <select id="month" aria-label="Select month"></select>
+
+                <select id="year" aria-label="Select year"></select>
+
+                <button id="todayBtn" type="button" class="today-btn">
+                    <i class="fa-solid fa-calendar-day"></i>
+                    Today
+                </button>
+
+            </div>
+
+            <!-- Weekdays -->
+
+            <div class="weekdays">
+
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+
+            </div>
+
+            <!-- Days -->
+
+            <div id="calendar" class="calendar-grid">
+
+            </div>
+
+        </div>
+
+        <!-- Add / Edit Event Modal -->
+
+        <div id="eventModal" class="modal">
+
+            <div class="modal-content">
+
+                <span id="closeModal" class="close">&times;</span>
+
+                <h2 id="eventModalTitle">Add Event</h2>
+
+                <input
+                    type="text"
+                    id="eventTitle"
+                    placeholder="Event Title">
+
+                <div class="modal-row">
+
+                    <input
+                        type="date"
+                        id="eventDate">
+
+                    <input
+                        type="time"
+                        id="eventTime">
+
+                </div>
+
+                <div class="modal-row">
+
+                    <select id="eventCategory">
+                        <option value="Study">📖 Study</option>
+                        <option value="Exam">🎯 Exam</option>
+                        <option value="Assignment">📝 Assignment</option>
+                        <option value="Meeting">🤝 Meeting</option>
+                        <option value="Personal">🌱 Personal</option>
+                    </select>
+
+                    <input
+                        type="color"
+                        id="eventColor"
+                        value="#142850"
+                        aria-label="Event color">
+
+                </div>
+
+                <textarea
+                    id="eventDescription"
+                    placeholder="Description"></textarea>
+
+                <p id="eventFormError" class="form-error"></p>
+
+                <div class="modal-buttons">
+
+                    <button id="saveEvent">
+                        Save
+                    </button>
+
+                    <button id="closeModalBtn">
+                        Cancel
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="events-panel">
+
+            <h3>📅 Events for <span id="eventsPanelDate">selected date</span></h3>
+
+            <div id="eventsList">
+
+                Select a date to view events.
+
+            </div>
+
+        </div>
+
+        <div class="bottom-grid">
+
+            <div class="card">
+
+                <h3>📌 Today's Events</h3>
+
+                <ul id="todaysEventsList">
+
+                    <li>No events for today.</li>
+
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>⏰ Upcoming Deadlines</h3>
+
+                <ul id="upcomingDeadlinesList">
+
+                    <li>No upcoming deadlines.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <h2 id="statSessions">0</h2>
+
+                <p>Study Sessions</p>
+
+            </div>
+
+            <div class="stat">
+
+                <h2 id="statAssignments">0</h2>
+
+                <p>Assignments</p>
+
+            </div>
+
+            <div class="stat">
+
+                <h2 id="statCompletion">0%</h2>
+
+                <p>Task Completion</p>
+
+            </div>
+
+            <div class="stat">
+
+                <h2 id="statStreak">0</h2>
+
+                <p>Study Streak</p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="sidebar.js"></script>
+<script src="calender.js"></script>
+</body>
+
+
+</html>

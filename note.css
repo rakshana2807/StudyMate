@@ -1,0 +1,561 @@
+/* =========================================================
+   NOTES PAGE — component styles only.
+
+   Global reset, sidebar, header, search box, floating
+   action button, toast and scrollbar are all defined in
+   style.css (loaded before this file) so that dark mode
+   and the responsive sidebar work consistently everywhere.
+   This file only styles things unique to the Notes page.
+   ========================================================= */
+
+/* ===========================
+   Create Note
+=========================== */
+
+.create-note {
+
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 35px;
+    margin-top: 30px;
+    transition: background-color var(--transition-base);
+
+}
+
+.create-note input {
+
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-bottom: 18px;
+    outline: none;
+    transition: .3s;
+
+}
+
+.create-note input:focus {
+
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(20, 40, 80, .15);
+
+}
+
+.create-note textarea {
+
+    width: 100%;
+    height: 160px;
+    resize: none;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    outline: none;
+    font-size: 15px;
+    transition: .3s;
+
+}
+
+.create-note textarea:focus {
+
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(20, 40, 80, .15);
+
+}
+
+/* ===========================
+   Note Options
+=========================== */
+
+.note-options {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.note-options label {
+
+    font-size: 15px;
+    cursor: pointer;
+    color: var(--text-secondary);
+
+}
+
+.note-options input {
+
+    width: auto;
+    margin-right: 8px;
+
+}
+
+.note-options button {
+
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 15px;
+    transition: .3s;
+
+}
+
+.note-options button:hover {
+
+    background: var(--color-primary-hover);
+    transform: scale(1.05);
+
+}
+
+/* ===========================
+   Section Title
+=========================== */
+
+.section-title {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 35px 0 20px;
+
+}
+
+.section-title h3 {
+
+    font-size: 22px;
+    color: var(--text-primary);
+
+}
+
+.section-title span {
+
+    color: var(--text-secondary);
+    font-weight: 600;
+
+}
+
+/* ===========================
+   Notes Grid
+=========================== */
+
+.notes-grid {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+
+}
+
+/* ===========================
+   Note Card
+=========================== */
+
+.note-card {
+
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    transition: .3s, background-color var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    word-wrap: break-word;
+    animation: fadeCard .35s ease;
+
+}
+
+.note-card:hover {
+
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+
+}
+
+.note-top {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.note-top h4 {
+
+    font-size: 20px;
+    color: var(--color-primary);
+
+}
+
+[data-theme="dark"] .note-top h4 {
+
+    color: var(--text-primary);
+
+}
+
+.note-top i {
+
+    color: var(--color-accent);
+    cursor: pointer;
+    font-size: 18px;
+
+}
+
+.note-card p {
+
+    color: var(--text-secondary);
+    line-height: 1.7;
+    white-space: pre-wrap;
+
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+.note-footer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+
+}
+
+.note-footer span {
+
+    font-size: 13px;
+    color: var(--text-muted);
+
+}
+
+.note-actions {
+
+    display: flex;
+    gap: 12px;
+
+}
+
+.note-actions i {
+
+    cursor: pointer;
+    font-size: 18px;
+    transition: .3s;
+
+}
+
+.note-actions .fa-pen {
+
+    color: #1E88E5;
+
+}
+
+.note-actions .fa-trash {
+
+    color: var(--color-danger);
+
+}
+
+.note-actions .fa-thumbtack {
+
+    color: var(--color-accent);
+
+}
+
+.note-actions i:hover {
+
+    transform: scale(1.2);
+
+}
+
+/* ===========================
+   Note Colors
+=========================== */
+
+.blue {
+    border-left: 6px solid #42A5F5;
+}
+
+.green {
+    border-left: 6px solid #66BB6A;
+}
+
+.yellow {
+    border-left: 6px solid #FFD54F;
+}
+
+.pink {
+    border-left: 6px solid #EC407A;
+}
+
+.purple {
+    border-left: 6px solid #AB47BC;
+}
+
+/* ===========================
+   Empty State
+=========================== */
+
+.empty-state {
+
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+
+}
+
+.empty-state i {
+
+    font-size: 70px;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+
+}
+
+.empty-state h2 {
+
+    margin-bottom: 10px;
+    color: var(--text-primary);
+
+}
+
+.empty-state p {
+
+    color: var(--text-muted);
+
+}
+
+/* ===========================
+   Modal
+=========================== */
+
+.modal {
+
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-overlay);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+}
+
+.modal-content {
+
+    width: 90%;
+    max-width: 550px;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    animation: fadeIn .3s;
+
+}
+
+.modal-content h2 {
+
+    margin-bottom: 20px;
+    color: var(--text-primary);
+
+}
+
+.modal-content input,
+.modal-content textarea {
+
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 14px;
+    margin-bottom: 18px;
+    outline: none;
+
+}
+
+.modal-content textarea {
+
+    height: 180px;
+    resize: none;
+
+}
+
+.modal-content button {
+
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: .3s;
+
+}
+
+.modal-content button:hover {
+
+    background: var(--color-primary-hover);
+
+}
+
+.close {
+
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-primary);
+
+}
+
+/* ===========================
+   Pin Option
+=========================== */
+
+.pin-option {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 15px;
+
+}
+
+.pin-option input {
+
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+
+}
+
+/* ===========================
+   Card Animation
+=========================== */
+
+@keyframes fadeCard {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ===========================
+   Export / Import Buttons
+=========================== */
+
+#exportNotes {
+
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .3s;
+    margin-top: 20px;
+    box-shadow: 0 6px 15px rgba(20, 40, 80, .15);
+
+}
+
+#exportNotes:hover {
+
+    background: var(--color-primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(20, 40, 80, .25);
+
+}
+
+#exportNotes:active {
+
+    transform: scale(.97);
+
+}
+
+.import-btn {
+
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 12px 22px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 12px;
+    margin-top: 20px;
+    transition: .3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .15);
+
+}
+
+.import-btn:hover {
+
+    background: #218838;
+    transform: translateY(-3px);
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 1024px) {
+
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .create-note {
+        padding: 18px;
+    }
+
+    .note-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .note-options button {
+        width: 100%;
+    }
+
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+}

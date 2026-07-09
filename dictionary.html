@@ -3,119 +3,138 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyMate Dictionary</title>
 
-    <title>StudyMate - Dictionary</title>
+<link rel="stylesheet" href="style.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="dictionary.css">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
 
-    <div class="container">
+<!-- Skip link for keyboard users -->
+<a href="#mainContent" class="skip-link">Skip to main content</a>
 
-        <!-- ================= Sidebar ================= -->
+<!-- Hamburger menu button (visible on mobile/tablet only) -->
+<button id="hamburgerBtn" class="hamburger-btn" type="button"
+    aria-label="Toggle sidebar menu" aria-expanded="false" aria-controls="sidebar">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-        <aside class="sidebar">
+<!-- Dark overlay behind the sidebar on mobile/tablet -->
+<div id="overlay" class="overlay" aria-hidden="true"></div>
 
-            <h1 class="logo">StudyMate</h1>
+<div class="container">
 
-            <div class="profile">
+    <!-- Sidebar -->
 
-                <img src="assets/profile.jpg" alt="Profile">
+    <aside class="sidebar" id="sidebar">
 
-                <h3>Rakshana</h3>
+        <h1 class="logo">StudyMate</h1>
+
+        <div class="profile">
+
+            <img src="profile.jpg" alt="Profile">
+
+            <h3>Rakshana</h3>
+
+        </div>
+
+        <nav aria-label="Primary">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="note.html">
+                        <i class="fa-solid fa-note-sticky"></i>
+                        Notes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tasks.html">
+                        <i class="fa-solid fa-list-check"></i>
+                        Tasks
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="dictionary.html">
+                        <i class="fa-solid fa-book"></i>
+                        Dictionary
+                    </a>
+                </li>
+
+                <li>
+                    <a href="calender.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-pressed="false">
+            <i class="fa-solid fa-moon"></i>
+            <span>Dark Mode</span>
+        </button>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main" id="mainContent">
+
+        <header>
+
+            <div>
+
+                <h2>📖 Dictionary</h2>
+
+                <p>Search meanings, pronunciation and examples.</p>
 
             </div>
 
-            <nav>
+        </header>
 
-                <ul>
+        <div class="search-container">
 
-                    <li>
-                        <a href="index.html">
-                            <i class="fa-solid fa-house"></i>
-                            Dashboard
-                        </a>
-                    </li>
+            <!-- Search Box -->
 
-                    <li>
-                        <a href="notes.html">
-                            <i class="fa-solid fa-note-sticky"></i>
-                            Notes
-                        </a>
-                    </li>
+            <div class="search-box" role="search">
 
-                    <li>
-                        <a href="tasks.html">
-                            <i class="fa-solid fa-list-check"></i>
-                            Tasks
-                        </a>
-                    </li>
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
 
-                    <li class="active">
-                        <a href="dictionary.html">
-                            <i class="fa-solid fa-book"></i>
-                            Dictionary
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="calendar.html">
-                            <i class="fa-solid fa-calendar-days"></i>
-                            Calendar
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="settings.html">
-                            <i class="fa-solid fa-gear"></i>
-                            Settings
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-        </aside>
-
-        <!-- ================= Main Content ================= -->
-
-        <main class="main">
-
-            <!-- Header -->
-
-            <header>
-
-                <div>
-
-                    <h2>📖 Dictionary</h2>
-
-                    <p>Search meanings, pronunciation and examples.</p>
-
-                </div>
-
-            </header>
-
-            <!-- Search -->
-
-            <div class="search-box">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <label for="wordInput" class="sr-only">Search any English word</label>
 
                 <input
                     type="text"
@@ -123,76 +142,85 @@
                     placeholder="Search any English word..."
                     autocomplete="off">
 
-                <button id="searchBtn" class="save-btn">
+                <button id="searchBtn" class="search-btn" type="button">
                     Search
                 </button>
 
             </div>
 
-            <!-- Dictionary Result -->
+        </div>
 
-            <section class="card" style="margin-top:30px;">
+        <!-- Dictionary Result -->
+
+        <div class="result-card">
+
+            <div class="word-row">
 
                 <h2 id="word" class="word">
                     Welcome 👋
                 </h2>
 
-                <p id="phonetic" style="color:#777;margin:10px 0;">
-                    Search a word to begin.
-                </p>
-
-                <h4 id="partOfSpeech"></h4>
-
-                <p id="meaning" class="meaning">
-                    Enter any English word in the search box above.
-                </p>
-
-                <p id="example"
-                    style="margin-top:20px;font-style:italic;color:#555;">
-                </p>
-
-                <button id="saveWord" class="save-btn">
-                    ⭐ Save Word
+                <button id="pronounceBtn" class="icon-btn" type="button" aria-label="Pronounce word">
+                    <i class="fa-solid fa-volume-high"></i>
                 </button>
 
-            </section>
+                <button id="copyBtn" class="icon-btn" type="button" aria-label="Copy word">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
 
-            <!-- Saved Words -->
+            </div>
 
-            <section class="card" style="margin-top:30px;">
+            <p id="phonetic" class="phonetic">
+                Search a word to begin.
+            </p>
 
-                <div class="card-header">
+            <h4 id="partOfSpeech" class="part-of-speech"></h4>
 
-                    <h3>⭐ Saved Words</h3>
+            <p id="meaning" class="meaning">
+                Enter any English word in the search box above.
+            </p>
 
-                    <button id="clearWords" class="save-btn">
-                        Clear All
-                    </button>
+            <p id="example" class="example">
+            </p>
 
-                </div>
+            <button id="saveWord" class="save-btn" type="button">
+                <i class="fa-solid fa-star"></i>
+                Save Word
+            </button>
 
-                <ul
-                    id="savedWordsList"
-                    class="notes-list">
+        </div>
 
-                    <li>No saved words.</li>
+        <!-- Saved Words -->
 
-                </ul>
+        <div class="saved-card">
 
-            </section>
+            <div class="saved-header">
 
-        </main>
+                <h3>⭐ Saved Words</h3>
 
-    </div>
+                <button id="clearWords" class="clear-btn" type="button">
+                    Clear All
+                </button>
 
-    <!-- Toast -->
+            </div>
 
-    <div id="toast" class="toast"></div>
+            <ul id="savedWordsList" class="saved-list">
 
-    <!-- JavaScript -->
+                <li>No saved words.</li>
 
-    <script src="dictionary.js"></script>
+            </ul>
 
+        </div>
+
+    </main>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="sidebar.js"></script>
+<script src="dictionary.js"></script>
 </body>
+
 
 </html>

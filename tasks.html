@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate - Tasks</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="tasks.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Skip link for keyboard users -->
+<a href="#mainContent" class="skip-link">Skip to main content</a>
+
+<!-- Hamburger menu button (visible on mobile/tablet only) -->
+<button id="hamburgerBtn" class="hamburger-btn" type="button"
+    aria-label="Toggle sidebar menu" aria-expanded="false" aria-controls="sidebar">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Dark overlay behind the sidebar on mobile/tablet -->
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+
+<div class="container">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <h1 class="logo">
+
+            StudyMate
+
+        </h1>
+
+        <div class="profile">
+
+            <img src="profile.jpg"
+                alt="Profile">
+
+            <h3>Rakshana</h3>
+
+        </div>
+
+        <nav aria-label="Primary">
+
+            <ul>
+
+                <li>
+
+                    <a href="index.html">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="notes.html">
+
+                        <i class="fa-solid fa-note-sticky"></i>
+
+                        Notes
+
+                    </a>
+
+                </li>
+
+                <li class="active">
+
+                    <a href="tasks.html">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        Tasks
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="dictionary.html">
+
+                        <i class="fa-solid fa-book"></i>
+
+                        Dictionary
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="calender.html">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        Calendar
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="settings.html">
+
+                        <i class="fa-solid fa-gear"></i>
+
+                        Settings
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-pressed="false">
+            <i class="fa-solid fa-moon"></i>
+            <span>Dark Mode</span>
+        </button>
+
+    </aside>
+
+    <!-- ================= Main ================= -->
+
+    <main class="main" id="mainContent">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <h2>
+
+                    📋 My Tasks
+
+                </h2>
+
+                <p>
+
+                    Organize, prioritize and complete your work.
+
+                </p>
+
+            </div>
+
+            <div class="header-right">
+
+                <span id="todayDate"></span>
+
+                <button id="headerAddBtn" class="add-btn" type="button">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Task
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchTask"
+                placeholder="Search tasks...">
+
+        </div>
+
+        <!-- ================= Add Task ================= -->
+
+        <section class="create-task">
+
+            <h3>➕ Add New Task</h3>
+
+            <input
+                type="text"
+                id="taskTitle"
+                placeholder="Task Title">
+
+            <textarea
+                id="taskDescription"
+                placeholder="Task Description"></textarea>
+
+            <div class="task-options">
+
+                <select id="taskPriority">
+
+                    <option value="High">
+                        🔴 High Priority
+                    </option>
+
+                    <option value="Medium" selected>
+                        🟡 Medium Priority
+                    </option>
+
+                    <option value="Low">
+                        🟢 Low Priority
+                    </option>
+
+                </select>
+
+                <select id="taskCategory">
+
+                    <option value="Study">📖 Study</option>
+                    <option value="Assignment">📝 Assignment</option>
+                    <option value="Exam">🎯 Exam</option>
+                    <option value="Personal">🌱 Personal</option>
+
+                </select>
+
+            </div>
+
+            <div class="task-options">
+
+                <input
+                    type="date"
+                    id="taskDate">
+
+                <input
+                    type="time"
+                    id="taskTime">
+
+            </div>
+
+            <button id="addTaskBtn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Task
+
+            </button>
+
+        </section>
+
+        <!-- ================= Summary ================= -->
+
+        <section class="summary">
+
+            <div class="summary-card">
+
+                <i class="fa-solid fa-list-check"></i>
+
+                <h2 id="totalTasks">0</h2>
+
+                <p>Total Tasks</p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <i class="fa-solid fa-hourglass-half"></i>
+
+                <h2 id="pendingTasks">0</h2>
+
+                <p>Pending</p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h2 id="completedTasks">0</h2>
+
+                <p>Completed</p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <i class="fa-solid fa-fire"></i>
+
+                <h2 id="highPriority">0</h2>
+
+                <p>High Priority</p>
+
+            </div>
+
+        </section>
+
+        <!-- ================= Filter & Sort ================= -->
+
+        <section class="filter-bar">
+
+            <select id="filterTask" aria-label="Filter tasks">
+
+                <option value="All">All Tasks</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="High">High Priority</option>
+                <option value="Medium">Medium Priority</option>
+                <option value="Low">Low Priority</option>
+                <option value="Today">Today's Tasks</option>
+                <option value="Overdue">Overdue Tasks</option>
+
+            </select>
+
+            <select id="sortTask" aria-label="Sort tasks">
+
+                <option value="dueDate">Sort: Due Date</option>
+                <option value="priority">Sort: Priority</option>
+                <option value="newest">Sort: Newest</option>
+                <option value="oldest">Sort: Oldest</option>
+                <option value="alphabetical">Sort: Alphabetical</option>
+
+            </select>
+
+        </section>
+
+        <!-- ================= Task Counter ================= -->
+
+        <h3 id="taskCount">
+
+            0 Tasks
+
+        </h3>
+
+        <!-- ================= Task Sections ================= -->
+
+        <div id="pendingSection" class="task-section">
+
+            <h3>🕓 Pending</h3>
+
+            <div id="pendingTasksContainer" class="tasks-container"></div>
+
+        </div>
+
+        <div id="completedSection" class="task-section">
+
+            <h3>✅ Completed</h3>
+
+            <div id="completedTasksContainer" class="tasks-container"></div>
+
+        </div>
+
+        <!-- ================= Empty State ================= -->
+
+        <div
+            id="emptyTaskState"
+            class="empty-state">
+
+            <i class="fa-solid fa-list-check"></i>
+
+            <h2>
+
+                No Tasks Found
+
+            </h2>
+
+            <p>
+
+                Try adjusting your filters or add a new task to get started.
+
+            </p>
+
+        </div>
+
+        <!-- ================= Progress ================= -->
+
+        <section class="progress-card">
+
+            <div class="progress-header">
+
+                <h3>
+
+                    📊 Task Progress
+
+                </h3>
+
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                 <div id="progressFill" class="progress-fill"></div>
+            </div>
+        </section>
+
+        <!-- ================= Floating Button ================= -->
+
+        <button
+            id="scrollTopBtn"
+            class="fab"
+            aria-label="Scroll to top">
+
+            <i class="fa-solid fa-arrow-up"></i>
+
+        </button>
+
+    </main>
+
+</div>
+
+<!-- ================= Edit Task Modal ================= -->
+
+<div id="taskModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeTaskModal" class="close">&times;</span>
+
+        <h2>Edit Task</h2>
+
+        <input
+            type="text"
+            id="editTaskTitle"
+            placeholder="Task Title">
+
+        <textarea
+            id="editTaskDescription"
+            placeholder="Task Description"></textarea>
+
+        <div class="task-options">
+
+            <select id="editTaskPriority">
+
+                <option value="High">🔴 High Priority</option>
+                <option value="Medium">🟡 Medium Priority</option>
+                <option value="Low">🟢 Low Priority</option>
+
+            </select>
+
+            <select id="editTaskCategory">
+
+                <option value="Study">📖 Study</option>
+                <option value="Assignment">📝 Assignment</option>
+                <option value="Exam">🎯 Exam</option>
+                <option value="Personal">🌱 Personal</option>
+
+            </select>
+
+        </div>
+
+        <div class="task-options">
+
+            <input type="date" id="editTaskDate">
+
+            <input type="time" id="editTaskTime">
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button id="saveTaskEdit">Save Changes</button>
+
+            <button id="cancelTaskEdit">Cancel</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= Toast ================= -->
+
+<div
+    id="toast"
+    class="toast">
+
+</div>
+
+<script src="sidebar.js"></script>
+<script src="tasks.js"></script>
+
+</body>
+
+</html>

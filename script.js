@@ -563,7 +563,7 @@ if (addButton) {
 
             case "1":
 
-                window.location.href = "notes.html";
+                window.location.href = "note.html";
 
                 break;
 
@@ -575,7 +575,7 @@ if (addButton) {
 
             case "3":
 
-                window.location.href = "calendar.html";
+                window.location.href = "calender.html";
 
                 break;
 

@@ -1,561 +1,399 @@
+
+// DOM Elements
 // ======================================
-// Dictionary Elements
 // ======================================
-
-const wordInput = document.getElementById("wordInput");
-
-const searchBtn = document.getElementById("searchBtn");
-
-const word = document.getElementById("word");
-
-const phonetic = document.getElementById("phonetic");
-
-const partOfSpeech = document.getElementById("partOfSpeech");
-
-const meaning = document.getElementById("meaning");
-
-const example = document.getElementById("example");
-
-const saveWordBtn = document.getElementById("saveWord");
-
-const savedWordsList = document.getElementById("savedWordsList");
-
-const clearWordsBtn = document.getElementById("clearWords");
-
-const toast = document.getElementById("toast");
-
-let currentWord = "";
-
-let currentMeaning = "";
-
-
+// Local Storage
 // ======================================
-// Toast Notification
 // ======================================
-
-function showToast(message) {
-
-    toast.textContent = message;
-
-    toast.style.opacity = "1";
-
-    setTimeout(() => {
-
-        toast.style.opacity = "0";
-
-    }, 2000);
-
-}
-
-
+// Toast
 // ======================================
-// Search Button
-// ======================================
-
-if (searchBtn) {
-
-    searchBtn.addEventListener("click", searchWord);
-
-}
-
-
-// ======================================
-// Press Enter to Search
-// ======================================
-
-if (wordInput) {
-
-    wordInput.addEventListener("keypress", function (e) {
-
-        if (e.key === "Enter") {
-
-            searchWord();
-
-        }
-
-    });
-
-}
-
-
 // ======================================
 // Search Word
 // ======================================
-
-async function searchWord() {
-
-    const searchText = wordInput.value.trim();
-
-    if (searchText === "") {
-
-        showToast("⚠️ Enter a word.");
-
-        return;
-
-    }
-
-    word.textContent = "Searching...";
-
-    phonetic.textContent = "";
-
-    partOfSpeech.textContent = "";
-
-    meaning.textContent = "Please wait...";
-
-    example.textContent = "";
-
-    try {
-
-        const response = await fetch(
-
-            `https://api.dictionaryapi.dev/api/v2/entries/en/${searchText}`
-
-        );
-
-        if (!response.ok) {
-
-            throw new Error("Word not found");
-
-        }
-
-        const data = await response.json();
-
-        const result = data[0];
-
-        currentWord = result.word;
-
-        currentMeaning =
-            result.meanings[0].definitions[0].definition;
-
-        word.textContent = result.word;
-
-        phonetic.textContent =
-            result.phonetic || "No pronunciation available";
-
-        partOfSpeech.textContent =
-            result.meanings[0].partOfSpeech;
-
-        meaning.textContent =
-            result.meanings[0].definitions[0].definition;
-
-        example.textContent =
-            result.meanings[0].definitions[0].example ||
-            "No example available.";
-
-    }
-
-    catch (error) {
-
-        currentWord = "";
-
-        currentMeaning = "";
-
-        word.textContent = "❌ Word Not Found";
-
-        phonetic.textContent = "";
-
-        partOfSpeech.textContent = "";
-
-        meaning.textContent =
-            "Please check the spelling and try again.";
-
-        example.textContent = "";
-
-        showToast("❌ Word not found.");
-
-    }
-
-}
+// ======================================
+// Pronunciation
+// ======================================
 // ======================================
 // Save Word
 // ======================================
-
-if (saveWordBtn) {
-
-    saveWordBtn.addEventListener("click", () => {
-
-        if (currentWord === "") {
-
-            showToast("⚠️ Search a word first.");
-
-            return;
-
-        }
-
-        let savedWords = JSON.parse(
-            localStorage.getItem("savedWords")
-        ) || [];
-
-        const exists = savedWords.some(item => item.word === currentWord);
-
-        if (exists) {
-
-            showToast("⚠️ Word already saved.");
-
-            return;
-
-        }
-
-        savedWords.push({
-
-            word: currentWord,
-
-            meaning: currentMeaning
-
-        });
-
-        localStorage.setItem(
-
-            "savedWords",
-
-            JSON.stringify(savedWords)
-
-        );
-
-        loadSavedWords();
-
-        showToast("✅ Word saved successfully!");
-
-    });
-
-}
-
-
 // ======================================
 // Load Saved Words
 // ======================================
-
-function loadSavedWords() {
-
-    if (!savedWordsList) return;
-
-    let savedWords = JSON.parse(
-        localStorage.getItem("savedWords")
-    ) || [];
-
-    savedWordsList.innerHTML = "";
-
-    if (savedWords.length === 0) {
-
-        savedWordsList.innerHTML = `
-            <li>No saved words.</li>
-        `;
-
-        return;
-
-    }
-
-    savedWords.forEach((item, index) => {
-
-        savedWordsList.innerHTML += `
-
-            <li>
-
-                <div class="saved-word">
-
-                    <i class="fa-solid fa-book"></i>
-
-                    <div>
-
-                        <strong>${item.word}</strong>
-
-                        <br>
-
-                        <small>${item.meaning}</small>
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="delete-btn"
-                    onclick="deleteWord(${index})">
-
-                    Delete
-
-                </button>
-
-            </li>
-
-        `;
-
-    });
-
-}
-
-
 // ======================================
 // Delete Word
 // ======================================
-
-function deleteWord(index) {
-
-    let savedWords = JSON.parse(
-        localStorage.getItem("savedWords")
-    ) || [];
-
-    savedWords.splice(index, 1);
-
-    localStorage.setItem(
-
-        "savedWords",
-
-        JSON.stringify(savedWords)
-
-    );
-
-    loadSavedWords();
-
-    showToast("🗑️ Word deleted.");
-
+// ======================================
+// Clear All
+// ======================================
+// ======================================
+// Dashboard Sync
+// ======================================
+// ======================================
+// Initial Load
+// ======================================
+// ======================================
+// StudyMate Dictionary
+// ======================================
+ 
+// ======================================
+// DOM Elements
+// ======================================
+ 
+const wordInput = document.getElementById("wordInput");
+const searchBtn = document.getElementById("searchBtn");
+ 
+const wordEl = document.getElementById("word");
+const phoneticEl = document.getElementById("phonetic");
+const partOfSpeechEl = document.getElementById("partOfSpeech");
+const meaningEl = document.getElementById("meaning");
+const exampleEl = document.getElementById("example");
+ 
+const pronounceBtn = document.getElementById("pronounceBtn");
+const copyBtn = document.getElementById("copyBtn");
+const saveWordBtn = document.getElementById("saveWord");
+ 
+const savedWordsList = document.getElementById("savedWordsList");
+const clearWordsBtn = document.getElementById("clearWords");
+ 
+const toast = document.getElementById("toast");
+ 
+const API_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+ 
+// A small pool of everyday words used to load a random word on first open
+const randomWordPool = [
+    "serendipity", "resilience", "curious", "harmony", "eloquent",
+    "gratitude", "wander", "vivid", "diligent", "insight",
+    "clarity", "momentum", "genuine", "flourish", "candid"
+];
+ 
+let currentWordData = null;
+let currentAudioUrl = "";
+ 
+// ======================================
+// Local Storage
+// ======================================
+ 
+function loadSavedWords() {
+ 
+    try {
+        return JSON.parse(localStorage.getItem("savedWords")) || [];
+    } catch {
+        return [];
+    }
+ 
 }
-
-
-// ======================================
-// Clear All Words
-// ======================================
-
-if (clearWordsBtn) {
-
-    clearWordsBtn.addEventListener("click", () => {
-
-        const confirmDelete = confirm(
-
-            "Delete all saved words?"
-
-        );
-
-        if (!confirmDelete) return;
-
-        localStorage.removeItem("savedWords");
-
-        loadSavedWords();
-
-        showToast("🧹 All words cleared.");
-
-    });
-
+ 
+function storeSavedWords(savedWords) {
+ 
+    localStorage.setItem("savedWords", JSON.stringify(savedWords));
+ 
 }
-
-
+ 
 // ======================================
-// Load Saved Words on Startup
+// Toast
 // ======================================
-
-loadSavedWords();
-// ======================================
-// Dashboard Word Count
-// ======================================
-
-function updateDashboardWordCount() {
-
-    const savedWords = JSON.parse(
-        localStorage.getItem("savedWords")
-    ) || [];
-
-    localStorage.setItem(
-        "dictionaryCount",
-        savedWords.length
-    );
-
+ 
+function showToast(message) {
+ 
+    if (!toast) return;
+ 
+    toast.textContent = message;
+    toast.style.opacity = "1";
+ 
+    setTimeout(() => {
+        toast.style.opacity = "0";
+    }, 2000);
+ 
 }
-
-
+ 
 // ======================================
-// Update Dashboard After Changes
+// Search Word
 // ======================================
-
-const originalLoadSavedWords = loadSavedWords;
-
-loadSavedWords = function () {
-
-    originalLoadSavedWords();
-
-    updateDashboardWordCount();
-
-};
-
-
+ 
+async function searchWord(term) {
+ 
+    const query = (term || wordInput.value).trim();
+ 
+    if (query === "") {
+        showToast("⚠️ Please enter a word");
+        return;
+    }
+ 
+    wordEl.textContent = "Searching...";
+    phoneticEl.textContent = "";
+    partOfSpeechEl.textContent = "";
+    meaningEl.textContent = "";
+    exampleEl.textContent = "";
+ 
+    try {
+ 
+        const response = await fetch(API_URL + encodeURIComponent(query));
+ 
+        if (!response.ok) {
+            throw new Error("Word not found");
+        }
+ 
+        const data = await response.json();
+ 
+        displayWord(data[0]);
+ 
+    } catch (error) {
+ 
+        wordEl.textContent = query;
+        phoneticEl.textContent = "No definition found.";
+        partOfSpeechEl.textContent = "";
+        meaningEl.textContent = "Please check the spelling and try again.";
+        exampleEl.textContent = "";
+ 
+        currentWordData = null;
+        currentAudioUrl = "";
+ 
+        showToast("❌ Word not found");
+ 
+    }
+ 
+}
+ 
+function displayWord(data) {
+ 
+    currentWordData = data;
+ 
+    const meaning = data.meanings && data.meanings[0];
+    const definitionEntry = meaning && meaning.definitions && meaning.definitions[0];
+ 
+    const phoneticText = data.phonetic
+        || (data.phonetics.find(p => p.text) || {}).text
+        || "";
+ 
+    const audioEntry = data.phonetics.find(p => p.audio);
+    currentAudioUrl = audioEntry ? audioEntry.audio : "";
+ 
+    wordEl.textContent = data.word;
+    phoneticEl.textContent = phoneticText || "No phonetic spelling available.";
+    partOfSpeechEl.textContent = meaning ? meaning.partOfSpeech : "";
+    meaningEl.textContent = definitionEntry ? definitionEntry.definition : "No meaning found.";
+    exampleEl.textContent = definitionEntry && definitionEntry.example
+        ? `"${definitionEntry.example}"`
+        : "";
+ 
+    showToast(`✅ Showing results for "${data.word}"`);
+ 
+}
+ 
+searchBtn.addEventListener("click", () => searchWord());
+ 
+wordInput.addEventListener("keydown", (e) => {
+ 
+    if (e.key === "Enter") {
+        e.preventDefault();
+        searchWord();
+    }
+ 
+});
+ 
+// ======================================
+// Pronunciation
+// ======================================
+ 
+function pronounceWord() {
+ 
+    if (!currentWordData) {
+        showToast("⚠️ Search a word first");
+        return;
+    }
+ 
+    if (currentAudioUrl) {
+ 
+        const audio = new Audio(currentAudioUrl);
+        audio.play();
+ 
+    } else if ("speechSynthesis" in window) {
+ 
+        const utterance = new SpeechSynthesisUtterance(currentWordData.word);
+        speechSynthesis.speak(utterance);
+ 
+    } else {
+ 
+        showToast("⚠️ Pronunciation not available");
+ 
+    }
+ 
+}
+ 
+pronounceBtn.addEventListener("click", pronounceWord);
+ 
 // ======================================
 // Copy Word
 // ======================================
-
-const copyBtn = document.createElement("button");
-
-copyBtn.textContent = "📋 Copy Word";
-
-copyBtn.className = "save-btn";
-
-copyBtn.style.marginLeft = "10px";
-
-if (saveWordBtn) {
-
-    saveWordBtn.insertAdjacentElement(
-        "afterend",
-        copyBtn
-    );
-
+ 
+function copyWord() {
+ 
+    if (!currentWordData) {
+        showToast("⚠️ Search a word first");
+        return;
+    }
+ 
+    navigator.clipboard.writeText(currentWordData.word)
+        .then(() => showToast("📋 Word Copied"))
+        .catch(() => showToast("❌ Copy failed"));
+ 
 }
-
-copyBtn.addEventListener("click", () => {
-
-    if (currentWord === "") {
-
-        showToast("⚠️ Search a word first.");
-
+ 
+copyBtn.addEventListener("click", copyWord);
+ 
+// ======================================
+// Save Word
+// ======================================
+ 
+function saveWord() {
+ 
+    if (!currentWordData) {
+        showToast("⚠️ Search a word first");
         return;
-
     }
-
-    navigator.clipboard.writeText(currentWord);
-
-    showToast("📋 Word copied!");
-
-});
-
-
-// ======================================
-// Pronunciation Audio
-// ======================================
-
-const audioBtn = document.createElement("button");
-
-audioBtn.textContent = "🔊 Pronounce";
-
-audioBtn.className = "save-btn";
-
-audioBtn.style.marginLeft = "10px";
-
-copyBtn.insertAdjacentElement(
-    "afterend",
-    audioBtn
-);
-
-audioBtn.addEventListener("click", async () => {
-
-    if (currentWord === "") {
-
-        showToast("⚠️ Search a word first.");
-
+ 
+    const meaning = currentWordData.meanings && currentWordData.meanings[0];
+    const definitionEntry = meaning && meaning.definitions && meaning.definitions[0];
+ 
+    const savedWords = loadSavedWords();
+ 
+    const alreadySaved = savedWords.some(w => w.word.toLowerCase() === currentWordData.word.toLowerCase());
+ 
+    if (alreadySaved) {
+        showToast("⚠️ Word already saved");
         return;
-
     }
-
-    try {
-
-        const response = await fetch(
-
-            `https://api.dictionaryapi.dev/api/v2/entries/en/${currentWord}`
-
-        );
-
-        const data = await response.json();
-
-        const phonetics = data[0].phonetics;
-
-        const audio = phonetics.find(
-
-            p => p.audio && p.audio !== ""
-
-        );
-
-        if (audio) {
-
-            new Audio(audio.audio).play();
-
-        }
-
-        else {
-
-            showToast("🔇 Audio unavailable.");
-
-        }
-
-    }
-
-    catch {
-
-        showToast("❌ Unable to play audio.");
-
-    }
-
-});
-
-
+ 
+    const wordObj = {
+        word: currentWordData.word,
+        partOfSpeech: meaning ? meaning.partOfSpeech : "",
+        meaning: definitionEntry ? definitionEntry.definition : ""
+    };
+ 
+    savedWords.unshift(wordObj);
+    storeSavedWords(savedWords);
+ 
+    renderSavedWords();
+    refreshDashboardSync();
+ 
+    showToast("⭐ Word Saved");
+ 
+}
+ 
+saveWordBtn.addEventListener("click", saveWord);
+ 
 // ======================================
-// Random Word on Page Load
+// Load Saved Words
 // ======================================
-
-const randomWords = [
-
-    "Integrity",
-    "Algorithm",
-    "Innovation",
-    "Programming",
-    "Computer",
-    "Artificial",
-    "Network",
-    "Database",
-    "Engineering",
-    "Productivity"
-
-];
-
+ 
+function renderSavedWords() {
+ 
+    const savedWords = loadSavedWords();
+ 
+    if (savedWords.length === 0) {
+        savedWordsList.innerHTML = "<li>No saved words.</li>";
+        return;
+    }
+ 
+    savedWordsList.innerHTML = savedWords.map((w, index) => `
+ 
+        <li class="saved-word-item">
+ 
+            <div class="saved-word-info">
+ 
+                <i class="fa-solid fa-book-bookmark"></i>
+ 
+                <div>
+                    <strong>${w.word}</strong>
+                    <small>${w.partOfSpeech ? w.partOfSpeech + " — " : ""}${w.meaning}</small>
+                </div>
+ 
+            </div>
+ 
+            <button type="button" class="delete-word-btn" title="Delete" onclick="deleteWord(${index})">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+ 
+        </li>
+ 
+    `).join("");
+ 
+}
+ 
+// ======================================
+// Delete Word
+// ======================================
+ 
+function deleteWord(index) {
+ 
+    const savedWords = loadSavedWords();
+ 
+    savedWords.splice(index, 1);
+    storeSavedWords(savedWords);
+ 
+    renderSavedWords();
+    refreshDashboardSync();
+ 
+    showToast("🗑️ Word Removed");
+ 
+}
+ 
+// ======================================
+// Clear All
+// ======================================
+ 
+function clearAllWords() {
+ 
+    const savedWords = loadSavedWords();
+ 
+    if (savedWords.length === 0) {
+        showToast("⚠️ No saved words to clear");
+        return;
+    }
+ 
+    const confirmClear = confirm("Clear all saved words?");
+ 
+    if (!confirmClear) return;
+ 
+    storeSavedWords([]);
+ 
+    renderSavedWords();
+    refreshDashboardSync();
+ 
+    showToast("🗑️ All Words Cleared");
+ 
+}
+ 
+clearWordsBtn.addEventListener("click", clearAllWords);
+ 
+// ======================================
+// Dashboard Sync
+// ======================================
+ 
+function refreshDashboardSync() {
+ 
+    const savedWords = loadSavedWords();
+ 
+    localStorage.setItem("savedWordsCount", savedWords.length);
+ 
+}
+ 
+// ======================================
+// Initial Load
+// ======================================
+ 
 function loadRandomWord() {
-
-    const random =
-
-        randomWords[
-            Math.floor(
-                Math.random() * randomWords.length
-            )
-        ];
-
-    wordInput.value = random;
-
-    searchWord();
-
+ 
+    const randomIndex = Math.floor(Math.random() * randomWordPool.length);
+    const randomWord = randomWordPool[randomIndex];
+ 
+    searchWord(randomWord);
+ 
 }
-
-
-// ======================================
-// Search Using URL Parameter
-// Example:
-// dictionary.html?word=algorithm
-// ======================================
-
-const params = new URLSearchParams(
-
-    window.location.search
-
-);
-
-const urlWord = params.get("word");
-
-if (urlWord) {
-
-    wordInput.value = urlWord;
-
-    searchWord();
-
-}
-
-else {
-
-    loadRandomWord();
-
-}
-
-
-// ======================================
-// Initial Dashboard Update
-// ======================================
-
-updateDashboardWordCount();
-
-
-// ======================================
-// Dictionary Ready
-// ======================================
-
-console.log("📖 StudyMate Dictionary Loaded Successfully");
+ 
+renderSavedWords();
+refreshDashboardSync();
+loadRandomWord();
+ 
+console.log("✅ StudyMate Dictionary Loaded Successfully");
+ 
